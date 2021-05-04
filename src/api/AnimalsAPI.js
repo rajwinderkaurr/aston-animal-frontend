@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
 
 export default function AnimalsAPI() {
-    const [animals, setAnimals] = useState([])
+    // const [animals, setAnimals] = useState([])
 
 
     const getAnimals = async () => {
