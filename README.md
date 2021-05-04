@@ -1,9 +1,9 @@
 # Aston Animal Sanctury
-![Animal Sanctury Logo](/assets/images/project_logo.png)
+![Animal Sanctury Logo](/src/assets/images/project_logo.png)
 
 <div style="text-align:center"><h2>For</h2></div>
 
-![Aston Logo](/assets/images/aston_logo.png)
+![Aston Logo](/src/assets/images/aston_logo.png)
 
 # Project Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8dafc65f-fe23-4b9a-83d4-c74cfdf0eb40/deploy-status)](https://app.netlify.com/sites/aston-animal/deploys) 
