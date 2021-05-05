@@ -1,0 +1,29 @@
+form.form{
+    border: 2px solid black;
+    width: 400px;
+    padding: 45px 45px 35px;
+    border-radius: 40px;
+    text-align: center;
+}
+.form h1{
+    font-size:40px;
+}
+.form > *{
+    margin: 20px auto;
+    width: 100%;
+
+}
+form input{
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-sizing: content-box;
+    font-size: 17px;
+    border: 2px solid black;
+    display: block;
+    box-sizing: border-box;
+    margin-top: 30px !important;
+}
+form.form p{
+    margin: 0;
+
+}

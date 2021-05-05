@@ -1,4 +1,14 @@
 header{
-    padding: 15px 70px;
-    
+    padding: 15px 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+header .right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .right a{
+    padding: 20px;
 }

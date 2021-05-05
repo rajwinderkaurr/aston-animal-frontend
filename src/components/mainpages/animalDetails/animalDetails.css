@@ -1,0 +1,40 @@
+.top{
+    display: flex;
+}
+.top > * {
+    padding: 20px;
+}
+.top .left-side{
+    flex: 1;
+}
+.top .img-main img{
+    border-radius: 30px;
+    overflow: hidden;
+    width: 50vw;
+    height: 30vw;
+    object-fit: cover;
+}
+.top .extra-images {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 140px);
+}
+.top .extra-image{
+    display: inline-block;
+}
+.top .extra-image img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.top .right-side{
+    flex: 1;
+}
+.top .right-side h1{
+    font-size: 6rem;
+    line-height: 6rem;
+    margin: 10px 0;
+    font-weight: 500;
+    overflow-wrap: break-word;
+}
