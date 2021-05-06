@@ -10,7 +10,7 @@ export default function Login() {
                 <input type="text" placeholder="Email"/>
                 <input type="password" placeholder="Password"/>
                 <button className="btn small">Login</button>
-                <p className="subtext" style={{ display: "blovk" }}>New Here? <Link to="/register" style={{ textDecoration:"underline" }}>Register</Link></p>
+                <p className="subtext" style={{ display: "block" }}>New Here? <Link to="/register" style={{ textDecoration:"underline" }}>Register</Link></p>
             </Form>
         </div>
     )

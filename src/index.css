@@ -33,6 +33,14 @@ code {
 .center > *{
   margin: auto;
 }
+.col-2{
+  display: flex;
+  box-sizing: content-box;
+  justify-content: space-between;
+}
+.col-2 > *{
+  width: 48%;
+}
 button.btn{
   font-size: 18px;
   background-color: black;
