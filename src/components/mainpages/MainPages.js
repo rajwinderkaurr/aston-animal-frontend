@@ -5,6 +5,7 @@ import Home from './home/Home'
 import AnimalDetails from './animalDetails/AnimalDetails'
 import Adoptions from './adoptions/Adoptions'
 import Register from './auth/Register'
+import AddAnimal from '../mainpages/admin/AddAnimal'
 
 export default function MainPages() {
     return (
@@ -14,6 +15,9 @@ export default function MainPages() {
             <Route path="/adoptions" exact component={Adoptions} />
             <Route path="/animals/:id" exact component={AnimalDetails} />
             <Route path="/" exact component={Home} />
+
+            {/* Admin paths */}
+            <Route path="/add_animal" exact component={AddAnimal} />
         </Switch>
     )
 }

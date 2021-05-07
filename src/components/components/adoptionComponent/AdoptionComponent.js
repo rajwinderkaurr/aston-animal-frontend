@@ -56,7 +56,7 @@ export default function AdoptionComponent() {
                         <h3>Status</h3>
                         <h1 style={{ textTransform: "capitalize" }}>{request.status}</h1>
                         <h2>{request.name}</h2>
-                        <h4>{ `${request.breed} ${request.category}・${request.age} year(s) old` }</h4>
+                        <h4>{ `${request.breed} ${request.category}・${request.age} old` }</h4>
                     <hr/>
                         <h2>
                             {request.status!== "pending"? `By ${request.by}・${request.updated_at}`: "Waiting for Approval"}

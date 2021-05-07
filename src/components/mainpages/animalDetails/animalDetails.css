@@ -13,6 +13,7 @@
     width: 50vw;
     height: 30vw;
     object-fit: cover;
+    object-position: center;
 }
 .top .extra-images {
     margin-top: 50px;
@@ -27,6 +28,7 @@
     height: 100px;
     border-radius: 10px;
     object-fit: cover;
+    object-position: center;
 }
 .top .right-side{
     flex: 1;

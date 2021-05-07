@@ -2,7 +2,7 @@
 /* Poppins font */
 
 body {
-  margin: 0 70px;
+  margin: 0 5vw;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,11 +50,41 @@ button.btn{
   border: none;
   border-radius: 100px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 100ms ease-out;
 }
 button.btn:hover{
-  opacity: 0.9;
+  opacity: 0.8;
 }
 button.btn.small{
   width: min-content;
+}
+
+form .form{
+  border: 2px solid black;
+  width: 400px;
+  padding: 45px 45px 35px;
+  border-radius: 40px;
+  text-align: center;
+}
+.form h1{
+  font-size:40px;
+}
+.form > *{
+  margin: 20px auto;
+  width: 100%;
+
+}
+form input{
+  padding: 15px 30px;
+  border-radius: 50px;
+  box-sizing: content-box;
+  font-size: 17px;
+  border: 2px solid black;
+  display: block;
+  box-sizing: border-box;
+  margin-top: 30px !important;
+}
+form.form p{
+  margin: 0;
+
 }

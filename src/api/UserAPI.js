@@ -5,25 +5,25 @@ export default function UserAPI(token) {
 
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
-
     
 
     useEffect(() => {
-        if (token) {
-            const getUser = async () => {
+        if(token){
+            const getUser = async () =>{
                 try {
-                    const res = await axios.get('/user/infor', {
-                        headers: { Authorization: token }
+                    const res = await axios.get('/users/infor', {
+                        headers: {Authorization: token}
                     })
-        
+
                     setIsLogged(true)
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
-                } catch (error) {
-                    alert(error)
+                } catch (err) {
+                    alert(err.response.data.msg)
                 }
             }
 
             getUser()
+            
         }
     }, [token])
 

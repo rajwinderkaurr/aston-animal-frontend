@@ -1,14 +1,18 @@
 // import React, { createContext } from 'react'
-import React from 'react'
-
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/images/Logo.svg';
 import './header.css'
+import axios from 'axios'
+import { GlobalState } from '../../GlobalState'
 // import axios from 'axios'
 
 export default function Header() {
-    const isAdmin = false
-    const isLoggedIn = false
+    const state = useContext(GlobalState)
+    console.log("state", state)
+    const [ isLoggedIn ] = state.userAPI.isLogged
+    const [ isAdmin ] = state.userAPI.isAdmin
+    console.log("admin", isAdmin)
     const adminRouter = () => {
         return (
             <>
@@ -18,6 +22,15 @@ export default function Header() {
             </>
         )
     }
+
+    const logoutUser = async () =>{
+        await axios.get('/users/logout')
+        
+        localStorage.removeItem('previousLogin')
+        
+        window.location.href = "/";
+    }
+
     const commonRouter = () => {
         return (
             <>
@@ -33,7 +46,7 @@ export default function Header() {
             <nav className="right">
                 { isAdmin && adminRouter() }
                 { commonRouter() }
-                { isLoggedIn ? <Link to="/profile">User</Link> : <Link to="/login">Login | Register</Link> }
+                { isLoggedIn ? <Link to="/" onClick={logoutUser}>Log Out</Link> : <Link to="/login" >Login | Register</Link> }
             </nav>
         </header>
     )

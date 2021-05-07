@@ -39,4 +39,6 @@
 .info-box-bw .part-3 p{
     margin: 3px 0;
     font-size: 0.7rem;
+    height: 4.5em;
+    overflow: hidden;
 }
