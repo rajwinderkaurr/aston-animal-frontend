@@ -42,7 +42,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4030",
+  "proxy": "http://localhost:40301",
   "p_proxy": "https://aston-animal-backend.herokuapp.com",
   "devDependencies": {
     "eslint-plugin-react": "^7.23.2"
