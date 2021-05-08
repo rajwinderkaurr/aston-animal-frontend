@@ -59,7 +59,7 @@ button.btn.small{
   width: min-content;
 }
 
-form .form{
+.form{
   border: 2px solid black;
   width: 400px;
   padding: 45px 45px 35px;

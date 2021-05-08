@@ -28,10 +28,10 @@ export default function Register() {
             
                 window.location.href = "/";
             }).catch(err => {
-                addToast((`Error ${err.response.status}: ${ err.response.data.message }` ), { appearance: "error" })
+                addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" })
             })
         } catch (err) {
-            addToast((`Error ${err.response.status}: ${ err.response.data.message }` ), { appearance: "error" })
+            addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" })
         }
     }
 

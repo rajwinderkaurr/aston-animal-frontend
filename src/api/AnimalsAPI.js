@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+// import { useEffect, useState } from 'react'
+// import axios from 'axios'
 
-export default function AnimalsAPI() {
-    const [animals, setAnimals] = useState([])
+// export default function AnimalsAPI() {
+//     const [animals, setAnimals] = useState({data: []})
 
-    const getAnimals = async () => {
-        const res = await axios.get('/api/animals')
+//     const getAnimals = async () => {
+//         axios.get('/api/animals').then(res => {
+//             setAnimals(res.data)
+//         }).catch(err => {
+//             setAnimals({ error: err.response })
+//         })
+//     }
 
-        setAnimals(res)
-    }
+//     useEffect(() => {
+//         getAnimals()
+//     }, [])
 
-    useEffect(() => {
-        getAnimals()
-    }, [])
-
-    return (
-        { animals: [animals, setAnimals] }
-    )
-}
+//     return (
+//         { animals: [animals, setAnimals] }
+//     )
+// }

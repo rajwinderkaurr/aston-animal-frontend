@@ -27,11 +27,13 @@ export default function AnimalDetails() {
         const getAnimalDetails = async () => {
             try {
                     axios.get(`/api/animals/single/${params.id}`).then(res => {
-                        console.log("response:", res)
-                        setDetailss({...res.data.rawAnimal, adoptions: res.data.adoptions, initial: false })
+                        console.log("response:", res.status)
+                        if (res.status === 200) {
+                            setDetailss({...res.data.rawAnimal, adoptions: res.data.adoptions, initial: false })
+                        }
                     }).catch(err => {
                         console.log("error", err.response)
-                        addToast((`Error ${err.response.status}: ${ err.response.data.message }` ), { appearance: "error" })
+                        addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" })
                     })
             } catch (error) {
                 console.error("Error: ", error)
