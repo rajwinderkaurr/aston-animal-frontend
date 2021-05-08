@@ -57,7 +57,7 @@ export default function AnimalDetails() {
                             {
                                 detailss.images.map(img => {
                                     return (
-                                        <div className="extra-image" onClick={() => setActiveimage( img )}>
+                                        <div key={img.split('/')[img.split('/').length-1]} className="extra-image" onClick={() => setActiveimage( img )}>
                                             <img src={img} alt={ detailss.name }/>
                                         </div>
                                     )

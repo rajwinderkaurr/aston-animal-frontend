@@ -16,6 +16,7 @@ export default function AnimalsGrid(props) {
             {animals.map(animal => {
                 return (
                     <InfoBoxBW 
+                        key={animal._id}
                         id={animal._id}
                         name={animal.name}
                         images={animal.images}

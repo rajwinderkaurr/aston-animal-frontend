@@ -4,6 +4,7 @@ import { Trash } from 'react-bootstrap-icons'
 
 const requests = [
     {
+        _id: "jkhsadfjkjkqwe324df",
         name: "Cocoa Cokani",
         breed: "Brazilian",
         age: 5,
@@ -13,6 +14,7 @@ const requests = [
         images: ["https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99.jpg"],
     },
     {
+        _id: "asdiod8qwhf8ashdufhew",
         name: "Cocoa Cokani",
         breed: "Brazilian",
         age: 5,
@@ -23,6 +25,7 @@ const requests = [
         images: ["https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99.jpg"],
     },
     {
+        _id: "sdh5urwhf34q4ui3tr",
         name: "Cocoa Cokani",
         breed: "Brazilian",
         age: 5,
@@ -43,7 +46,7 @@ export default function AdoptionComponent() {
     console.log(requests)
     const adoptions = requests.map(request => {
         return (
-            <div className="adoption">
+            <div className="adoption" key={request._id}>
                 <div className="left-side">
                     <img src={request.images.slice(0, 1)} alt={request.name}/>
                 </div>
