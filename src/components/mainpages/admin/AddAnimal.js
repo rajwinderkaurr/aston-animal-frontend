@@ -1,23 +1,23 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState } from 'react'
-import { useToasts } from 'react-toast-notifications'
+// import { useToasts } from 'react-toast-notifications'
 
 export default function AddAnimal() {
-    const { addToast } = useToasts()
+    // const { addToast } = useToasts()
     const [state, setState] = useState({ name: "", breed: "", "category": "", description: "", images: "" })
     
-    function upload(file, onUploadProgress) {
-        let formData = new FormData();
+    // function upload(file, onUploadProgress) {
+    //     let formData = new FormData();
     
-        formData.append("file", file);
+    //     formData.append("file", file);
     
-        return axios.post("/upload", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-            onUploadProgress,
-        });
-    }
+    //     return axios.post("/upload", formData, {
+    //         headers: {
+    //             "Content-Type": "multipart/form-data",
+    //         },
+    //         onUploadProgress,
+    //     });
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
