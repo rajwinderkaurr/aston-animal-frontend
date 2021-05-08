@@ -11,7 +11,9 @@ export default function Header() {
     const state = useContext(GlobalState)
     console.log("state", state)
     const [ isLoggedIn ] = state.userAPI.isLogged
-    const [ isAdmin ] = state.userAPI.isAdmin
+    // const [ isAdmin ] = state.userAPI.isAdmin
+    console.log("admin Status", state.userAPI.isAdmin)
+    const isAdmin = false
     console.log("admin", isAdmin)
     const adminRouter = () => {
         return (
