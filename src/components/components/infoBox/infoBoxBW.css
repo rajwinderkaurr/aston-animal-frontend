@@ -9,6 +9,8 @@
 .info-box-bw img{
     height: 270px;
     background-position: center;
+    object-fit: cover;
+    width: 100%;
 }
 
 .info-box-bw .else{

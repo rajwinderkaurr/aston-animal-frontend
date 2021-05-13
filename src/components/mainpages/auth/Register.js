@@ -8,19 +8,15 @@ export default function Register() {
     const [state, setState] = useState({})
 
     const handleChange = e => {
-        console.log("caller", e.target.name, e.target.value)
         setState({...state, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = async e => {
         e.preventDefault()
 
-        console.log(state.first)
-        console.log(state.last)
         state.name = `${state.first} ${state.last}`
 
         const {first, last, ...toSend} = {...state, name:`${state.first} ${state.last}`}
-        console.log("State", toSend)
 
         try {
             await axios.post('/users/register', {...toSend}).then(res => {

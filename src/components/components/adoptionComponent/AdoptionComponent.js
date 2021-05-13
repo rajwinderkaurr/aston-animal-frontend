@@ -43,7 +43,6 @@ export default function AdoptionComponent() {
         console.log("deleted")
     }
 
-    console.log(requests)
     const adoptions = requests.map(request => {
         return (
             <div className="adoption" key={request._id}>

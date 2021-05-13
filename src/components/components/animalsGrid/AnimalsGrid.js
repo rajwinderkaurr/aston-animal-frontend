@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import InfoBoxBW from '../infoBox/InfoBoxBW'
 import moment from 'moment'
-import Loading from '../loading/Loading'
+import Loading from '../../mainpages/utils/loading/Loading'
 import './animalsGrid.css'
-import axios from 'axios'
-import { useToasts } from 'react-toast-notifications'
+import { GlobalState } from '../../../GlobalState'
+// import { useToasts } from 'react-toast-notifications'
 
 export default function AnimalsGrid(props) {
-    const { addToast } = useToasts()
-    const [isLoading, setLoading] = useState(true);
-    const [animals, setAnimals] = useState([]);
+    // const { addToast } = useToasts()
+    const state = useContext(GlobalState)
 
-    useEffect(() => {
-        axios.get("/api/animals").then(response => {
-            setAnimals(response.data)
-            setLoading(false)
-        }).catch(err => {
-            addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" })
-        })
-    }, [addToast]);
+    const [animals] = state.animalsAPI.animals
 
-    if (isLoading) {
+
+    if (animals.length === 0) {
         return <Loading />
     }
 

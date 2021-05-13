@@ -5,7 +5,7 @@ export default function UserAPI(token) {
 
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
-    
+    const [userDetails, setUserDetails] = useState({})
 
     useEffect(() => {
         if(token){
@@ -16,10 +16,11 @@ export default function UserAPI(token) {
                     })
 
                     setIsLogged(true)
-                    // res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
-                    setIsAdmin(res.data)
+                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
+                    setUserDetails(res.data)
+                    // setIsAdmin(res.data)
                 } catch (err) {
-                    alert(err.response.data.msg)
+                    alert(err || err.response.data.msg)
                 }
             }
 
@@ -28,9 +29,18 @@ export default function UserAPI(token) {
         }
     }, [token])
 
+    const adoptAnimal = async () => {
+        if (!isLogged) return alert("Please Login before raising adoption")
+        if (isAdmin) return alert("Admins cannot adopt animals")
+
+        await axios.get("")
+    }
+
     return {
         isLogged: [ isLogged, setIsLogged ],
-        isAdmin: [ isAdmin, setIsAdmin ]
+        isAdmin: [ isAdmin, setIsAdmin ],
+        userDetails: [userDetails, setUserDetails],
+        adoptAnimal: [ adoptAnimal ]
     }
 }
 

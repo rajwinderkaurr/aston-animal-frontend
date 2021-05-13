@@ -10,6 +10,8 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-bootstrap-icons": "^1.4.0",
+    "react-datepicker": "^3.8.0",
+    "react-day-picker": "^7.4.10",
     "react-dom": "^17.0.2",
     "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^5.2.0",
@@ -42,7 +44,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:40301",
+  "proxy": "http://localhost:4030",
   "p_proxy": "https://aston-animal-backend.herokuapp.com",
   "devDependencies": {
     "eslint-plugin-react": "^7.23.2"

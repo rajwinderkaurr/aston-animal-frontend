@@ -6,7 +6,7 @@ export default function InfoBoxBW({ id, name, images, description, age, breed, c
     return (
         <Link to={`/animals/${id}`} className="info-box-bw">
             <div style={{display: "flex", justifyContent:"center"}}>
-                <img src={images.slice(0,1)} alt={name + "'s image"}/>
+                <img src={images[0].url} alt={name + "'s image"}/>
             </div>
             <div className="else">
                 <div className="part-2">

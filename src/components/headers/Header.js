@@ -9,12 +9,9 @@ import { GlobalState } from '../../GlobalState'
 
 export default function Header() {
     const state = useContext(GlobalState)
-    console.log("state", state)
     const [ isLoggedIn ] = state.userAPI.isLogged
-    // const [ isAdmin ] = state.userAPI.isAdmin
-    console.log("admin Status", state.userAPI.isAdmin)
-    const isAdmin = false
-    console.log("admin", isAdmin)
+    const [ isAdmin ] = state.userAPI.isAdmin
+    const [ userDetails ] = state.userAPI.userDetails
     const adminRouter = () => {
         return (
             <>
@@ -44,11 +41,13 @@ export default function Header() {
 
     return (
         <header>
-            <Link to="/"><Logo style={{marginTop: "-1ow 0px"}}/></Link>
+            <Link to="/" className="logo-wrapper"><Logo style={{marginTop: "-1ow 0px"}}/>
+                {isAdmin && <span className="subtext">Admin</span>}
+            </Link>
             <nav className="right">
                 { isAdmin && adminRouter() }
                 { commonRouter() }
-                { isLoggedIn ? <Link to="/" onClick={logoutUser}>Log Out</Link> : <Link to="/login" >Login | Register</Link> }
+                { isLoggedIn ? <Link to="/" onClick={logoutUser}>Log Out ({userDetails.name.split(' ')[0]})</Link> : <Link to="/login" >Login | Register</Link> }
             </nav>
         </header>
     )
