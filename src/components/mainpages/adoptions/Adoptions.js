@@ -4,7 +4,7 @@ import AdoptionComponent from '../../components/adoptionComponent/AdoptionCompon
 export default function Adoptions() {
     return (
         <div>
-            <h2>Your Adoptions</h2>
+            <h1>Your Adoptions</h1>
             <AdoptionComponent />
         </div>
     )

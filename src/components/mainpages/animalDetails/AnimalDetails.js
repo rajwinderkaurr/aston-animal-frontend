@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import './animalDetails.css'
 import AnimalsGrid from '../../components/animalsGrid/AnimalsGrid'
@@ -17,6 +17,8 @@ export default function AnimalDetails() {
 
     const [isAdmin] = state.userAPI.isAdmin
     const [isLogged] = state.userAPI.isLogged
+    const [token] = state.token
+    const [animals] = state.animalsAPI.animals
     // const [adoptAnimal] = state.userAPI.adoptAnimal
     
     const [detailss, setDetailss] = useState({images: [], initial: true})
@@ -24,7 +26,7 @@ export default function AnimalDetails() {
     const [isConfirmAdopt, setIsConfirmAdopt] = useState(false)
     const [activeImage, setActiveimage] = useState(detailss.images[0])
     const [isLoading, setIsLoading] = useState(true)
-    const [adoptFormState, setAdoptFormState] = useState({})
+    const textarea = useRef(null)
 
     
     useEffect(() => {
@@ -64,12 +66,21 @@ export default function AnimalDetails() {
         confirmDelete()
     }
 
-    const handleChange = e => {
-        setAdoptFormState({...adoptFormState, [e.target.name]: e.target.value})
-    }
-
     const confirmDelete = () => {
         setIsConfirmDelete(true)
+    }
+
+    const handleAdoptionSubmit = async e => {
+        e.preventDefault()
+        setIsConfirmAdopt(false)
+        console.log({userMessage: textarea.current.value, animalId: params.id})
+        await axios.post('/api/adoption', {userMessage: textarea.current.value, animalId: params.id}, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            addToast("Adoption request posted. You will recieve an e-mail (on registered email) when the status changes", {appearance: "success"})
+        }).catch(err => addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" }))
     }
 
     const animalDetailsComponent = () => {
@@ -95,7 +106,11 @@ export default function AnimalDetails() {
                     <div className="right-side">
                         <h3>{`${detailss.breed} ${detailss.category}・Born on ${moment(detailss.dob).format("MMMM Do, YYYY")}`}</h3>
                         <h1>{detailss.name}</h1>
-                        {isAdmin? <button className="btn" onClick={handleDelete}>Delete</button>:<button className="btn" onClick={() => handlePress()}>Raise Adoption Request</button>}
+                        {
+                            isAdmin ? <button className="btn" onClick={handleDelete}>Delete</button> : 
+                            detailss.isAdopted? <button className="btn" title="Animal adopted out :)" disabled>Raise Adoption Request</button> :
+                            <button className="btn" onClick={() => handlePress()}>Raise Adoption Request</button>
+                        }
                         <h3>{detailss.adoptions} waiting in queue to adopt this {detailss.category}</h3>
                         <hr/>
                         <h2>About Me</h2>
@@ -105,7 +120,7 @@ export default function AnimalDetails() {
                 <div className="bottom">
                     <hr/>
                     <h1>My friends</h1>
-                    <AnimalsGrid  />
+                    <AnimalsGrid animals={animals.filter(animal => (String(animal.category) === String(detailss.category) && String(animal._id) !== String(params.id)))}  />
                 </div>
             </>
         )
@@ -120,9 +135,12 @@ export default function AnimalDetails() {
                     <button className="btn btn-outline" onClick={() => setIsConfirmDelete(false)}>No</button>
                 </div>
             </Modal> }
-            { isConfirmAdopt && <Modal title="Confirm Adoption" onClose={() => setIsConfirmAdopt(false)}>
+            { isConfirmAdopt && <Modal title="Confirm Adoption" onClose={() => {
+                setIsConfirmAdopt(false)
+            }}>
                 <h2>Generate adoption request..</h2>
-                <textarea name="user_message" placeholder="Write a request message..." style={{width: "100%"}} rows="10" onChange={handleChange} value={adoptFormState.user_message} />
+                <textarea key="jsakdfjkdsa" name="user_message" placeholder="Write a request message..." rows="10" ref={textarea} style={{marginBottom: "20px", width: "100%"}}/>
+                <button className="btn" onClick={handleAdoptionSubmit}>Post Request</button>
             </Modal> }
             { isLoading? <Loading /> : animalDetailsComponent() }
         </div>

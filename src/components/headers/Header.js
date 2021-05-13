@@ -47,7 +47,7 @@ export default function Header() {
             <nav className="right">
                 { isAdmin && adminRouter() }
                 { commonRouter() }
-                { isLoggedIn ? <Link to="/" onClick={logoutUser}>Log Out ({userDetails.name.split(' ')[0]})</Link> : <Link to="/login" >Login | Register</Link> }
+                { isLoggedIn ? <Link to="/" onClick={logoutUser}>Log Out{userDetails.name ? ` (${userDetails.name.split(' ')[0]})` : ""}</Link> : <Link to="/login" >Login | Register</Link> }
             </nav>
         </header>
     )

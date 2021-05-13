@@ -52,6 +52,11 @@ button.btn{
   cursor: pointer;
   transition: all 100ms ease-out;
 }
+.btn:disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .btn-outline{
   border: 2px solid black !important;
   color: black !important;
@@ -95,6 +100,10 @@ form input, textarea{
 }
 form.form p{
   margin: 0;
+}
+
+input, textarea{
+  outline: none;
 }
 
 .DayPicker, .DayPicker * {
