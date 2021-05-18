@@ -8,6 +8,7 @@ export const GlobalState = createContext()
 
 export default function DataProvider({children}) {
     const [token, setToken] = useState(false)
+    const [callback, setCallback] = useState(false)
 
     useEffect(() => {
         const previousLogin = localStorage.getItem('previousLogin')
@@ -24,13 +25,15 @@ export default function DataProvider({children}) {
             }
             refreshToken()
         }
-    }, [])
+    }, [callback])
 
+    const refresh = () => setCallback(!callback)
 
     const state = {
         token: [ token, setToken ],
         userAPI: UserAPI(token),
-        animalsAPI: AnimalsAPI()
+        animalsAPI: AnimalsAPI(),
+        refresh
     }
 
 

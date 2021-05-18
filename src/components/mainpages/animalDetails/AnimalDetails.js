@@ -19,6 +19,8 @@ export default function AnimalDetails() {
     const [isLogged] = state.userAPI.isLogged
     const [token] = state.token
     const [animals] = state.animalsAPI.animals
+    const refresh = state.refresh
+
     // const [adoptAnimal] = state.userAPI.adoptAnimal
     
     const [detailss, setDetailss] = useState({images: [], initial: true})
@@ -27,6 +29,7 @@ export default function AnimalDetails() {
     const [activeImage, setActiveimage] = useState(detailss.images[0])
     const [isLoading, setIsLoading] = useState(true)
     const textarea = useRef(null)
+    const relatedAnimals = animals.filter(animal => (String(animal.category) === String(detailss.category) && String(animal._id) !== String(params.id)))
 
     
     useEffect(() => {
@@ -73,13 +76,13 @@ export default function AnimalDetails() {
     const handleAdoptionSubmit = async e => {
         e.preventDefault()
         setIsConfirmAdopt(false)
-        console.log({userMessage: textarea.current.value, animalId: params.id})
         await axios.post('/api/adoption', {userMessage: textarea.current.value, animalId: params.id}, {
             headers: {
                 Authorization: token
             }
         }).then(res => {
             addToast("Adoption request posted. You will recieve an e-mail (on registered email) when the status changes", {appearance: "success"})
+            refresh()
         }).catch(err => addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" }))
     }
 
@@ -111,16 +114,22 @@ export default function AnimalDetails() {
                             detailss.isAdopted? <button className="btn" title="Animal adopted out :)" disabled>Raise Adoption Request</button> :
                             <button className="btn" onClick={() => handlePress()}>Raise Adoption Request</button>
                         }
-                        <h3>{detailss.adoptions} waiting in queue to adopt this {detailss.category}</h3>
+                        <h3>{
+                            !detailss.isAdopted && `${detailss.adoptions} waiting in queue to adopt this ${detailss.category}`
+                        }</h3>
                         <hr/>
                         <h2>About Me</h2>
                         <p>{detailss.description}</p>
                     </div>
                 </div>
                 <div className="bottom">
-                    <hr/>
-                    <h1>My friends</h1>
-                    <AnimalsGrid animals={animals.filter(animal => (String(animal.category) === String(detailss.category) && String(animal._id) !== String(params.id)))}  />
+                    {relatedAnimals.length > 0 && (
+                        <>
+                            <hr/>
+                            <h1>My friends</h1>
+                            <AnimalsGrid animals={relatedAnimals}  />
+                        </>
+                    )}
                 </div>
             </>
         )

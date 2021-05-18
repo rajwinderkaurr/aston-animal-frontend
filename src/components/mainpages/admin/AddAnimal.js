@@ -24,6 +24,7 @@ export default function AddAnimal() {
 
     const [isAdmin] = state.userAPI.isAdmin
     const [token] = state.token
+    const refresh = state.refresh
 
     let toAdd = []
 
@@ -73,6 +74,7 @@ export default function AddAnimal() {
             headers: { Authorization: token }
         }).then(res => {
             addToast("Added the animal successfully", {appearance: "success"})
+            refresh()
         }).catch(err => {
             addToast(`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }`, {appearance: "error"})
         })

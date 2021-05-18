@@ -30,6 +30,15 @@ export default function Header() {
         window.location.href = "/";
     }
 
+    const loggedInRouter = () => {
+        return (
+            <>
+                <Link to="/user">{userDetails.name ? userDetails.name.split(' ')[0] : ""}</Link>
+                <Link to="/" onClick={logoutUser}>Log Out</Link>
+            </>
+        )
+    }
+
     const commonRouter = () => {
         return (
             <>
@@ -47,7 +56,7 @@ export default function Header() {
             <nav className="right">
                 { isAdmin && adminRouter() }
                 { commonRouter() }
-                { isLoggedIn ? <Link to="/" onClick={logoutUser}>Log Out{userDetails.name ? ` (${userDetails.name.split(' ')[0]})` : ""}</Link> : <Link to="/login" >Login | Register</Link> }
+                { isLoggedIn ? loggedInRouter() : <Link to="/login" >Login | Register</Link> }
             </nav>
         </header>
     )

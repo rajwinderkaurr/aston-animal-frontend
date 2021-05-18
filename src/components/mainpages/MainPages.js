@@ -11,6 +11,7 @@ import Adoptions from './adoptions/Adoptions'
 // Authorized
 import Login from './auth/Login'
 import Register from './auth/Register'
+import User from './user/User'
 
 // Admin
 import AddAnimal from '../mainpages/admin/AddAnimal'
@@ -30,6 +31,7 @@ export default function MainPages() {
             {/* User related paths */}
             <Route path="/login" exact component={!isLogged? Login: NotFound} />
             <Route path="/register" exact component={!isLogged? Register: NotFound} />
+            <Route path="/user" exact component={isLogged? User: Login} />
             <Route path="/adoptions" exact component={Adoptions} />
             <Route path="/animals/:id" exact component={AnimalDetails} />
             <Route path="/modal" exact >
