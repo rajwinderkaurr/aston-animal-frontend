@@ -16,8 +16,6 @@ export default function Header() {
         return (
             <>
                 <Link to="/add_animal">Add Animal</Link>
-                <Link to="/categories">Categories</Link>
-                <Link to="/requests">Requests</Link>
             </>
         )
     }

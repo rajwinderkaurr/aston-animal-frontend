@@ -7,7 +7,7 @@ export default function Modal({ title, children, onClose }) {
 
     const closeModal = () => {
         setModalIsOpen(false)
-        onClose()
+        if  (onClose) onClose()
     }
 
     const Modal = () => {

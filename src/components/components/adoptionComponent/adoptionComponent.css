@@ -22,21 +22,31 @@
     padding: 30px 40px;
     position: relative;
 }
-.adoption .right-side .absolute-delete{
+.absolute-delete{
     position: absolute;
     top: 30px;
     right: 30px;
-    font-size: 30px;
+    
+}
+.absolute-delete > *{
     width: 60px;
-    padding: 18px 10px 10px;
+    font-size: 30px;
+    padding: 18px 10px;
     border-radius: 10px;
+    text-align: center;
     border: none;
     background-color: inherit;
     cursor: pointer;
-    line-height: 120%;
+    /* line-height: 120%; */
+    display: flex;
+    justify-content: space-between;
 }
-.adoption .right-side .absolute-delete:hover{
+.absolute-delete > *:hover{
     background-color: #ececec;
+}
+.absolute-delete svg, img{
+    display: inline-block;
+    margin: auto;
 }
 .adoption .right-side hr{
     margin: 20px 0;

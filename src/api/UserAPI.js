@@ -6,6 +6,7 @@ export default function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [userAdoptions, setUserAdoptions] = useState([])
+    const [publicAdoptions, setPublicAdoptions] = useState([])
     const [userDetails, setUserDetails] = useState({})
 
     useEffect(() => {
@@ -40,13 +41,26 @@ export default function UserAPI(token) {
             getUser()
             userAdoptions()
         }
+
+        const publicAdoptions = async () => {
+            try {
+                const res = await axios.get('/api/adoptions')
+
+                setPublicAdoptions(res.data)
+            } catch (err) {
+                alert(err || err.response.data.msg)
+            }
+        }
+
+        publicAdoptions()
     }, [token])
 
     return {
         isLogged: [ isLogged, setIsLogged ],
         isAdmin: [ isAdmin, setIsAdmin ],
         userDetails: [userDetails, setUserDetails],
-        userAdoptions: [userAdoptions, setUserAdoptions]
+        userAdoptions: [userAdoptions, setUserAdoptions],
+        publicAdoptions: [publicAdoptions, setPublicAdoptions]
     }
 }
 

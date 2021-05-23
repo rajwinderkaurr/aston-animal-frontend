@@ -2,9 +2,11 @@ import React from 'react'
 import InfoBoxBW from '../infoBox/InfoBoxBW'
 import moment from 'moment'
 import './animalsGrid.css'
+import NotFound from '../../mainpages/utils/notFound/NotFound'
 
 export default function AnimalsGrid({animals}) {
     // const { addToast } = useToasts()
+    if (!animals) return <NotFound />
 
     return (
         <div className="animals-grid">

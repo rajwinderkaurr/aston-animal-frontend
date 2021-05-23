@@ -42,13 +42,13 @@ export default function AnimalDetails() {
     useEffect(() => {
         const getAnimalDetails = async () => {
             try {
-                    axios.get(`/api/animals/single/${params.id}`).then(res => {
-                        if (res.status === 200) {
-                            setDetailss({...res.data.rawAnimal, adoptions: res.data.adoptions, initial: false })
-                        }
-                    }).catch(err => {
-                        addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" })
-                    })
+                axios.get(`/api/animals/single/${params.id}`).then(res => {
+                    if (res.status === 200) {
+                        setDetailss({...res.data.rawAnimal, adoptions: res.data.adoptions, initial: false })
+                    }
+                }).catch(err => {
+                    addToast((`Error ${err.response.status}: ${ err.response.data.message || err.response.statusText }` ), { appearance: "error" })
+                })
             } catch (error) {
                 console.error("Error: ", error)
             }

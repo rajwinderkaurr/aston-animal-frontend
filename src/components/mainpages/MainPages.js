@@ -16,6 +16,7 @@ import User from './user/User'
 // Admin
 import AddAnimal from '../mainpages/admin/AddAnimal'
 import DeleteAnimal from '../mainpages/admin/DeleteAnimal'
+import AdminAdoptions from '../mainpages/admin/AdminAdoptions'
 
 // Utils
 import NotFound from './utils/notFound/NotFound'
@@ -31,7 +32,7 @@ export default function MainPages() {
             {/* User related paths */}
             <Route path="/login" exact component={!isLogged? Login: NotFound} />
             <Route path="/register" exact component={!isLogged? Register: NotFound} />
-            <Route path="/user" exact component={isLogged? User: Login} />
+            <Route path="/user" exact component={isLogged? (isAdmin? AdminAdoptions: User): Login} />
             <Route path="/adoptions" exact component={Adoptions} />
             <Route path="/animals/:id" exact component={AnimalDetails} />
             <Route path="/modal" exact >

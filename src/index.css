@@ -26,7 +26,7 @@ code {
 
 .center{
   min-width: 100%;
-  min-height: 85vh;
+  min-height: calc(100vh - 190px);
   display: flex;
   align-items: center;
 }
@@ -87,7 +87,7 @@ button.btn.small{
   width: 100%;
 
 }
-form input, textarea{
+form input, textarea, input.inp{
   padding: 15px 30px;
   border-radius: 50px;
   box-sizing: content-box;
@@ -109,3 +109,10 @@ input, textarea{
 .DayPicker, .DayPicker * {
   all: revert !important;
 }
+
+.flex { display: flex}
+.justify-between { justify-content: space-between;}
+.relative{position: relative;}
+.-mt-6{ top: -6px }
+.absolute { position: absolute; }
+.r-0 { right: 0; }
