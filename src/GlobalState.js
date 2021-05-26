@@ -2,7 +2,7 @@ import React, { useState, createContext, useEffect } from 'react'
 import AnimalsAPI from './api/AnimalsAPI'
 import UserAPI from './api/UserAPI'
 
-import axios from 'axios'
+import axios from './axios'
 
 export const GlobalState = createContext()
 
